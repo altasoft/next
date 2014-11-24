@@ -50,7 +50,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Next\Next.csproj">
+    <ProjectReference Include="..\..\src\Next\Next.csproj">
       <Project>{2f4a9fff-63c2-4849-9cb6-641d76aa5dd6}</Project>
       <Name>Next</Name>
     </ProjectReference>

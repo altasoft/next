@@ -18,5 +18,17 @@ namespace System
         {
             return @this.ToString(CultureInfo.InvariantCulture);
         }
+
+        /// <summary>
+        /// Converts nullable value to string using invariant culture
+        /// </summary>
+        /// <typeparam name="TValue">Type of source value</typeparam>
+        /// <param name="this">Source value</param>
+        /// <returns>Culture invariant representation of source value</returns>
+        public static string ToStringInvariant<TValue>(this TValue? @this)
+            where TValue : struct, IConvertible
+        {
+            return @this.HasValue ? @this.Value.ToStringInvariant() : null;
+        }
     }
 }

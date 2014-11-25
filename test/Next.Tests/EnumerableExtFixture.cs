@@ -6,7 +6,7 @@ namespace Next.Tests
     public sealed class EnumerableExtFixture
     {
         [Fact]
-        public void EnumerableFollow()
+        public void Follow()
         {
             var sequnce = new[] { 1, 2, 3 }
                 .Follow(4);
@@ -19,6 +19,15 @@ namespace Next.Tests
         {
             Assert.Equal(1, 1.ToEnumerable().First());
             Assert.Equal(1, 1.ToEnumerable().Last());
+        }
+
+        [Fact]
+        public void Lead()
+        {
+            var sequence = new[] { 2, 3, 4 }
+                .Lead(1);
+
+            Assert.Equal(1, sequence.First());
         }
     }
 }

@@ -35,5 +35,22 @@ namespace System.Linq
         {
             yield return @this;
         }
+
+        /// <summary>
+        /// Leads sequence with new element
+        /// </summary>
+        /// <typeparam name="TSource">Source sequence element type</typeparam>
+        /// <param name="sequence">Source sequnce</param>
+        /// <param name="value">New element</param>
+        /// <returns>Sequence with new leading element</returns>
+        public static IEnumerable<TSource> Lead<TSource>(this IEnumerable<TSource> sequence, TSource value)
+        {
+            yield return value;
+
+            foreach (var item in sequence)
+            {
+                yield return item;
+            }
+        }
     }
 }

@@ -36,5 +36,19 @@ namespace System.Text
         {
             return condition ? @this.Append(value) : @this;
         }
+
+        /// <summary>
+        /// Appends text computed by <param name="getValue"/> if condition is true
+        /// </summary>
+        /// <param name="this">Source string builder</param>
+        /// <param name="getValue">Function which returns text to add</param>
+        /// <param name="condition">Condition to check</param>
+        /// <returns>Instance of source string builder</returns>
+        public static StringBuilder AppendIf(this StringBuilder @this,
+            Func<string> getValue,
+            bool condition)
+        {
+            return condition ? @this.Append(getValue()) : @this;
+        }
     }
 }

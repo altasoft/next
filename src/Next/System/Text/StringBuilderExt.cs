@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 // ReSharper disable once CheckNamespace
 
 
@@ -49,6 +50,31 @@ namespace System.Text
             bool condition)
         {
             return condition ? @this.Append(getValue()) : @this;
+        }
+
+        /// <summary>
+        /// Appends string values separated with specified separator
+        /// </summary>
+        /// <param name="this">Source string builder</param>
+        /// <param name="values">String values</param>
+        /// <param name="separator">Separator</param>
+        /// <returns>Instance of source string builder</returns>
+        public static StringBuilder AppendSeparated(this StringBuilder @this, IEnumerable<string> values,
+            string separator)
+        {
+            var iterator = values.GetEnumerator();
+
+            if (iterator.MoveNext())
+            {
+                @this.Append(iterator.Current);
+
+                while (iterator.MoveNext())
+                {
+                    @this.Append(separator).Append(iterator.Current);
+                }
+            }
+            
+            return @this;
         }
     }
 }

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System\Collections\Generic\DictionaryExt.cs" />
     <Compile Include="System\ConvertibleExt.cs" />
     <Compile Include="System\DateTimeExt.cs" />
     <Compile Include="System\Linq\EnumerableExt.cs" />

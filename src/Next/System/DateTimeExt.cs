@@ -32,6 +32,21 @@ namespace System
         }
 
         /// <summary>
+        /// Generates infinite sequence of folowing days from specified date
+        /// </summary>
+        /// <param name="this">Specified date</param>
+        /// <returns>Infinite sequence of following days from specified date</returns>
+        public static IEnumerable<DateTime> FollowingDays(this DateTime @this)
+        {
+            var i = 0;
+
+            while (true)
+            {
+                yield return @this.AddDays(++i);
+            }
+        }
+
+        /// <summary>
         /// Generates infinite sequence of folowing months from specified date
         /// </summary>
         /// <param name="this">Specified date</param>

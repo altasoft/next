@@ -44,7 +44,7 @@ namespace System.Linq
         /// <param name="value">New element</param>
         /// <returns>Sequence with new leading element</returns>
         public static IEnumerable<TSource> Lead<TSource>(this IEnumerable<TSource> sequence, TSource value)
-        {
+        {            
             yield return value;
 
             foreach (var item in sequence)
@@ -52,5 +52,119 @@ namespace System.Linq
                 yield return item;
             }
         }
+
+        /// <summary>
+        /// Returns first element in sequence or fails with specified exception
+        /// </summary>
+        /// <typeparam name="TSource">Source sequence element type</typeparam>
+        /// <param name="source">Source sequnce</param>
+        /// <param name="failWith">Exception factory</param>
+        /// <returns>First element</returns>
+        public static TSource FirstOrFailWith<TSource>(this IEnumerable<TSource> source,
+            Func<Exception> failWith)
+        {            
+            foreach (var item in source)
+            {
+                return item;
+            }
+
+            throw failWith();
+        }
+
+        /// <summary>
+        /// Returns first element in sequence that satisfies a specified condition or fails with specified exception
+        /// </summary>
+        /// <typeparam name="TSource">Source sequence element type</typeparam>
+        /// <param name="source">Source sequnce</param>
+        /// <param name="predicate">Condition</param>
+        /// <param name="failWith">Exception factory</param>
+        /// <returns>First element</returns>
+        public static TSource FirstOrFailWith<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate,
+            Func<Exception> failWith) => FirstOrFailWith(source.Where(predicate), failWith);
+
+        public static TSource LastOrFailWith<TSource>(this IEnumerable<TSource> source,
+            Func<Exception> failWith)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            var list = source as IList<TSource>;
+
+            if (list != null)
+            {
+                var count = list.Count;
+
+                if (count > 0)
+                {
+                    return list[count - 1];
+                }
+            }
+            else
+            {
+                using (var e = source.GetEnumerator())
+                {
+                    if (e.MoveNext())
+                    {
+                        TSource result;
+
+                        do
+                        {
+                            result = e.Current;
+                        } while (e.MoveNext());
+
+                        return result;
+                    }
+                }
+            }
+
+            throw failWith();
+        }
+
+        public static TSource LastOrFailWith<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate,
+            Func<Exception> failWith) => LastOrFailWith(source.Where(predicate), failWith);
+
+        public static TSource SingleOrFailWith<TSource>(this IEnumerable<TSource> source,
+            Func<Exception> failWith)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+            var list = source as IList<TSource>;
+
+            if (list != null)
+            {
+                if (list.Count == 1)
+                {
+                    return list[0];
+                }
+            }
+            else
+            {
+                using (var e = source.GetEnumerator())
+                {
+                    if (e.MoveNext())
+                    {
+                        var result = e.Current;
+
+                        if (!e.MoveNext())
+                        {
+                            return result;
+                        }
+                    }
+                }
+            }
+
+            throw failWith();
+        }
+
+        public static TSource SingleOrFailWith<TSource>(this IEnumerable<TSource> source,
+            Func<TSource, bool> predicate,
+            Func<Exception> failWith) => SingleOrFailWith(source.Where(predicate), failWith);
+
     }
 }

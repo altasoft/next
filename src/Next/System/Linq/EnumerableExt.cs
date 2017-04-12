@@ -166,5 +166,15 @@ namespace System.Linq
             Func<TSource, bool> predicate,
             Func<Exception> failWith) => SingleOrFailWith(source.Where(predicate), failWith);
 
+        public static bool NotNullAndAny<TSource>(this IEnumerable<TSource> self)
+        {
+            return self != null && self.Any();
+        }
+
+        public static bool NotNullAndAny<TSource>(this IEnumerable<TSource> self,
+            Func<TSource, bool> predicate)
+        {
+            return self != null && self.Any(predicate);
+        }
     }
 }

@@ -28,7 +28,7 @@ namespace System
         public static string ToStringInvariant<TValue>(this TValue? @this)
             where TValue : struct, IConvertible
         {
-            return @this.HasValue ? @this.Value.ToStringInvariant() : null;
+            return @this?.ToStringInvariant();
         }
     }
 }

@@ -44,7 +44,7 @@ namespace System.Linq
         /// <param name="value">New element</param>
         /// <returns>Sequence with new leading element</returns>
         public static IEnumerable<TSource> Lead<TSource>(this IEnumerable<TSource> sequence, TSource value)
-        {            
+        {
             yield return value;
 
             foreach (var item in sequence)
@@ -62,7 +62,7 @@ namespace System.Linq
         /// <returns>First element</returns>
         public static TSource FirstOrFailWith<TSource>(this IEnumerable<TSource> source,
             Func<Exception> failWith)
-        {            
+        {
             foreach (var item in source)
             {
                 return item;

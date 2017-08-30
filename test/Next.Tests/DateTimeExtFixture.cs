@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -55,8 +55,8 @@ namespace Next.Tests
                 .FollowingMonths(2)
                 .Take(5)
                 .SequenceEqual(new[]
-                {                    
-                    new DateTime(2014, 12, 31),                    
+                {
+                    new DateTime(2014, 12, 31),
                     new DateTime(2015, 2, 28),
                     new DateTime(2015, 4, 30),
                     new DateTime(2015, 6, 30),
@@ -67,7 +67,7 @@ namespace Next.Tests
                 .FollowingMonths(2)
                 .Take(5)
                 .SequenceEqual(new[]
-                {                    
+                {
                     new DateTime(2014, 12, 23),
                     new DateTime(2015, 2, 23),
                     new DateTime(2015, 4, 23),
@@ -100,15 +100,15 @@ namespace Next.Tests
                     new DateTime(2014, 11, 30),
                     new DateTime(2014, 12, 31),
                     new DateTime(2015, 1, 31),
-                    new DateTime(2015, 2, 28)                    
+                    new DateTime(2015, 2, 28)
                 }));
 
             Assert.True(new DateTime(2014, 10, 31)
                 .FollowingEndOfMonths(2)
                 .Take(5)
                 .SequenceEqual(new[]
-                {                    
-                    new DateTime(2014, 12, 31),                    
+                {
+                    new DateTime(2014, 12, 31),
                     new DateTime(2015, 2, 28),
                     new DateTime(2015, 4, 30),
                     new DateTime(2015, 6, 30),
@@ -119,8 +119,8 @@ namespace Next.Tests
                 .FollowingEndOfMonths(2)
                 .Take(5)
                 .SequenceEqual(new[]
-                {                    
-                    new DateTime(2014, 12, 31),                    
+                {
+                    new DateTime(2014, 12, 31),
                     new DateTime(2015, 2, 28),
                     new DateTime(2015, 4, 30),
                     new DateTime(2015, 6, 30),

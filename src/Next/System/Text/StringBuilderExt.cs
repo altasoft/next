@@ -73,7 +73,7 @@ namespace System.Text
                     @this.Append(separator).Append(iterator.Current);
                 }
             }
-            
+
             return @this;
         }
     }

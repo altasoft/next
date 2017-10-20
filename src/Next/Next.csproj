@@ -1,10 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.1;netcoreapp2.0;net45;net40</TargetFrameworks>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
-    <Version>2.0.0</Version>
+    <TargetFrameworks>netcoreapp1.1;netcoreapp2.0;net45</TargetFrameworks>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
+    <Version>2.0.1</Version>
     <Authors>ALTA Software</Authors>
     <Company>ALTA Software</Company>
     <Description>Extension methods for .Net</Description>
@@ -13,6 +13,11 @@
     <RepositoryUrl>http://github.com/altasoft/next</RepositoryUrl>
     <PackageTags>Extensions</PackageTags>
     <Copyright>Copyright © ALTA Software Ltd. 2017</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
+  </ItemGroup>
 
 </Project>

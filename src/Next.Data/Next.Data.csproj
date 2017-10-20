@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.0;net45</TargetFrameworks>
+    <Version>2.0.0</Version>
+    <PackageTags>Data Extensions</PackageTags>
+    <RepositoryUrl>http://github.com/altasoft/next</RepositoryUrl>
+    <Copyright>Copyright © ALTA Software Ltd. 2017</Copyright>
+    <PackageProjectUrl>http://github.com/altasoft/next</PackageProjectUrl>
+    <Description>Extension methods for Data</Description>
+    <Authors>ALTA Software</Authors>
+    <Company>ALTA Software</Company>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Next\Next.csproj" />
+  </ItemGroup>
+
+</Project>

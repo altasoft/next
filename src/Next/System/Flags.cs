@@ -12,27 +12,31 @@ namespace System
         public static IEnumerable<byte> Decode(byte value) =>
             Enumerable.Range(0, value).Select(v => (byte)(1 << v)).TakeWhile(v => v <= value).Where(v => (v & value) == v);
 
-        public static IEnumerable<int> DecodeBitPositions(this int self)
+        public static IEnumerable<int> DecodeBitPositions(int value)
         {
             var pos = -1;
-            var flag = 0;
+            int flag;
 
-            while ((flag = (1 << ++pos)) <= self)
+            while ((flag = 1 << ++pos) <= value)
             {
-                if ((flag & self) == flag)
+                if ((flag & value) == flag)
+                {
                     yield return pos;
+                }
             }
         }
 
-        public static IEnumerable<int> DecodeBitPositions(this byte self)
+        public static IEnumerable<int> DecodeBitPositions(byte value)
         {
             var pos = -1;
-            var flag = 0;
+            int flag;
 
-            while ((flag = (1 << ++pos)) <= self)
+            while ((flag = 1 << ++pos) <= value)
             {
-                if ((flag & self) == flag)
+                if ((flag & value) == flag)
+                {
                     yield return pos;
+                }
             }
         }
     }

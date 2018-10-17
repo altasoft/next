@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ALTA Software</Authors>
     <Company>ALTA SoftwareALTA Software</Company>
@@ -9,6 +9,7 @@
     <PackageProjectUrl>https://github.com/altasoft/next</PackageProjectUrl>
     <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
     <PackageTags>Data extensions</PackageTags>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

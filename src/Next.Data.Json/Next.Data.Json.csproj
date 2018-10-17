@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Next.Data\Next.Data.csproj" />
-    <ProjectReference Include="..\src\Next\Next.csproj" />
+    <ProjectReference Include="..\Next.Data\Next.Data.csproj" />
+    <ProjectReference Include="..\Next\Next.csproj" />
   </ItemGroup>
 
 </Project>

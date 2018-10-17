@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Next.Tests", "test\Next.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Next.Data", "src\Next.Data\Next.Data.csproj", "{BAC7439A-C816-4273-BEF2-94705A4255D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Next.Data.Json", "Next.Data.Json\Next.Data.Json.csproj", "{2DCF10D2-08FA-4F0C-94B5-AA14E2D34CC5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Next.Data.Json", "src\Next.Data.Json\Next.Data.Json.csproj", "{2DCF10D2-08FA-4F0C-94B5-AA14E2D34CC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

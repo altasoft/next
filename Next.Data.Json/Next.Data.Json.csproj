@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ALTA Software</Authors>
+    <Company>ALTA SoftwareALTA Software</Company>
+    <Copyright>Copyright © ALTA Software Ltd. 2018</Copyright>
+    <PackageProjectUrl>http://github.com/altasoft/next</PackageProjectUrl>
+    <RepositoryUrl>http://github.com/altasoft/next</RepositoryUrl>
+    <PackageTags>Data extensions</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\Next.Data\Next.Data.csproj" />
+    <ProjectReference Include="..\src\Next\Next.csproj" />
+  </ItemGroup>
+
+</Project>

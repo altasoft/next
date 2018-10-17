@@ -4,9 +4,9 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <Version>2.1.0</Version>
     <PackageTags>Data Extensions</PackageTags>
-    <RepositoryUrl>http://github.com/altasoft/next</RepositoryUrl>
+    <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
     <Copyright>Copyright © ALTA Software Ltd. 2018</Copyright>
-    <PackageProjectUrl>http://github.com/altasoft/next</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/altasoft/next</PackageProjectUrl>
     <Description>Extension methods for Data</Description>
     <Authors>ALTA Software</Authors>
     <Company>ALTA Software</Company>

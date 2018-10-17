@@ -9,8 +9,8 @@
     <Company>ALTA Software</Company>
     <Description>Extension methods for .Net</Description>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageProjectUrl>http://github.com/altasoft/next</PackageProjectUrl>
-    <RepositoryUrl>http://github.com/altasoft/next</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/altasoft/next</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
     <PackageTags>Extensions</PackageTags>
     <Copyright>Copyright © ALTA Software Ltd. 2018</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

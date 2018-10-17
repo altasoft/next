@@ -6,8 +6,8 @@
     <Authors>ALTA Software</Authors>
     <Company>ALTA SoftwareALTA Software</Company>
     <Copyright>Copyright © ALTA Software Ltd. 2018</Copyright>
-    <PackageProjectUrl>http://github.com/altasoft/next</PackageProjectUrl>
-    <RepositoryUrl>http://github.com/altasoft/next</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/altasoft/next</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
     <PackageTags>Data extensions</PackageTags>
   </PropertyGroup>
 

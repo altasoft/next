@@ -16,7 +16,13 @@ namespace System
             }
 
             var enumType = typeof(TEnum);
+            var underlyingType = Enum.GetUnderlyingType(enumType);
 
+            if (underlyingType != value.GetType())
+            {
+                value = Convert.ChangeType(value, underlyingType);
+            }
+            
             if (!Enum.IsDefined(enumType, value))
             {
                 var isDefined = false;
@@ -29,7 +35,7 @@ namespace System
       
                 if (!isDefined)
                 {
-                    return (false, default(TEnum));
+                    return default;
                 }
             }
 

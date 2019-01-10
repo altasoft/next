@@ -9,25 +9,35 @@ namespace System.Data
 {
     public static class DataRecordExt
     {
+        private static Exception FieldValueTypeError(string name, object value, Type type) => new InvalidOperationException($"`{name}` field value: `{value}` is not {type.Name}.");
+
+        private static TValue Get<TValue>(this IDataRecord self, string name)
+            where TValue : struct
+        {
+            var value = self[name];
+
+            return value is TValue v ? v : throw FieldValueTypeError(name, value, typeof(TValue));
+        }
+
         #region String
 
         public static string GetString(this IDataRecord self, string name)
         {
             var value = self[name];
 
-            if (Convert.IsDBNull(value))
+            switch (value)
             {
-                return null;
+                case DBNull _: return null;
+                case string s: return s;
+                default: throw FieldValueTypeError(name, value, typeof(string));
             }
-
-            return (string)value;
         }
 
         #endregion
 
         #region Boolean
 
-        public static bool GetBoolean(this IDataRecord self, string name) => (bool)self[name];
+        public static bool GetBoolean(this IDataRecord self, string name) => self.Get<bool>(name);
 
         public static bool? GetBooleanOrNull(this IDataRecord self, string name) => self.GetNullable<bool>(name);
 
@@ -35,7 +45,7 @@ namespace System.Data
 
         #region Byte
 
-        public static byte GetByte(this IDataRecord self, string name) => (byte)self[name];
+        public static byte GetByte(this IDataRecord self, string name) => self.Get<byte>(name);
 
         public static byte? GetByteOrNull(this IDataRecord self, string name) => self.GetNullable<byte>(name);
 
@@ -43,7 +53,7 @@ namespace System.Data
 
         #region Int16
 
-        public static short GetInt16(this IDataRecord self, string name) => (short)self[name];
+        public static short GetInt16(this IDataRecord self, string name) => self.Get<short>(name);
 
         public static short? GetInt16OrNull(this IDataRecord self, string name) => self.GetNullable<short>(name);
 
@@ -51,7 +61,7 @@ namespace System.Data
 
         #region Int32
 
-        public static int GetInt32(this IDataRecord self, string name) => (int)self[name];
+        public static int GetInt32(this IDataRecord self, string name) => self.Get<int>(name);
 
         public static int? GetInt32OrNull(this IDataRecord self, string name) => self.GetNullable<int>(name);
 
@@ -59,7 +69,7 @@ namespace System.Data
 
         #region Int64
 
-        public static long GetInt64(this IDataRecord self, string name) => (long)self[name];
+        public static long GetInt64(this IDataRecord self, string name) => self.Get<long>(name);
 
         public static long? GetInt64OrNull(this IDataRecord self, string name) => self.GetNullable<long>(name);
 
@@ -67,7 +77,7 @@ namespace System.Data
 
         #region Decimal
 
-        public static decimal GetDecimal(this IDataRecord self, string name) => (decimal)self[name];
+        public static decimal GetDecimal(this IDataRecord self, string name) => self.Get<decimal>(name);
 
         public static decimal? GetDecimalOrNull(this IDataRecord self, string name) => self.GetNullable<decimal>(name);
 
@@ -75,7 +85,7 @@ namespace System.Data
 
         #region DateTime
 
-        public static DateTime GetDateTime(this IDataRecord self, string name) => (DateTime)self[name];
+        public static DateTime GetDateTime(this IDataRecord self, string name) => self.Get<DateTime>(name);
 
         public static DateTime? GetDateTimeOrNull(this IDataRecord self, string name) => self.GetNullable<DateTime>(name);
 
@@ -87,30 +97,37 @@ namespace System.Data
         {
             var value = self[name];
 
-            if (Convert.IsDBNull(value))
+            switch (value)
             {
-                return null;
+                case DBNull _: return null;
+                case byte[] bytes: return bytes;
+                default: throw FieldValueTypeError(name, value, typeof(byte[]));
             }
-
-            return (byte[])value;
         }
 
         #endregion
 
         #region Timestamp
 
-        public static ulong ReadTimestampAsUInt64(this IDataRecord self, string name) => BitConverter.ToUInt64(((byte[])self[name]).Reverse().ToArray(), 0);
+        private static ulong TimestampAsUInt64(byte[] bytes) => BitConverter.ToUInt64(bytes.Reverse().ToArray(), 0);
+
+        public static ulong ReadTimestampAsUInt64(this IDataRecord self, string name)
+        {
+            var value = self[name];
+
+            return value is byte[] bytes ? TimestampAsUInt64(bytes) : throw FieldValueTypeError(name, value, typeof(byte[]));
+        }
 
         public static ulong? ReadTimestampAsUInt64OrNull(this IDataRecord self, string name)
         {
             var value = self[name];
 
-            if (Convert.IsDBNull(value))
+            switch (value)
             {
-                return null;
+                case DBNull _: return null;
+                case byte[] bytes: return TimestampAsUInt64(bytes);
+                default: throw FieldValueTypeError(name, value, typeof(byte[]));
             }
-
-            return BitConverter.ToUInt64(((byte[])value).Reverse().ToArray(), 0);
         }
 
         #endregion
@@ -138,8 +155,16 @@ namespace System.Data
                 : EnumExt.ToEnumOrFail<TEnum>(value, () => failWith(value));
         }
 
+        public static TEnum AsEnum<TEnum>(this IDataRecord self, string name)
+            where TEnum : struct =>
+            self.AsEnumOrFailIfNotDefined<TEnum>(name, v => FieldValueTypeError(name, v, typeof(TEnum)));
+
+        public static TEnum? AsEnumOrNull<TEnum>(this IDataRecord self, string name)
+            where TEnum : struct =>
+            self.AsEnumOrNullOrFailIfNotDefined<TEnum>(name, v => FieldValueTypeError(name, v, typeof(TEnum)));
+
         #endregion
-        
+
         #region Xml
 
         public static TResult ReadXmlAs<TResult>(this IDataRecord self, string name)
@@ -176,12 +201,12 @@ namespace System.Data
         {
             var value = self[name];
 
-            if (Convert.IsDBNull(value))
+            switch (value)
             {
-                return null;
+                case DBNull _: return null;
+                case TValue v: return v;
+                default: throw FieldValueTypeError(name, value, typeof(TValue));
             }
-
-            return (TValue)value;
         }
     }
 }

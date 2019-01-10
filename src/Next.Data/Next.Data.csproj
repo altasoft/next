@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
     <PackageTags>Data Extensions</PackageTags>
     <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
     <Copyright>Copyright © ALTA Software Ltd. 2019</Copyright>

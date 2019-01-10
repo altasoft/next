@@ -140,7 +140,7 @@ namespace System.Data
             where TEnum : struct
         {
             var value = self[name];
-            return EnumExt.ToEnumOrFail<TEnum>(value, () => failWith(value));
+            return Convert.IsDBNull(value) ? throw failWith(value) : EnumExt.ToEnumOrFail<TEnum>(value, () => failWith(value));
         }
 
         public static TEnum? AsEnumOrNullOrFailIfNotDefined<TEnum>(this IDataRecord self,
@@ -149,10 +149,7 @@ namespace System.Data
             where TEnum : struct
         {
             var value = self[name];
-
-            return Convert.IsDBNull(value)
-                ? (TEnum?)null
-                : EnumExt.ToEnumOrFail<TEnum>(value, () => failWith(value));
+            return Convert.IsDBNull(value) ? (TEnum?)null : EnumExt.ToEnumOrFail<TEnum>(value, () => failWith(value));
         }
 
         public static TEnum AsEnum<TEnum>(this IDataRecord self, string name)

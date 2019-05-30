@@ -5,11 +5,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ALTA Software</Authors>
     <Company>ALTA SoftwareALTA Software</Company>
-    <Copyright>Copyright © ALTA Software Ltd. 2018</Copyright>
+    <Copyright>Copyright © ALTA Software Ltd. 2019</Copyright>
     <PackageProjectUrl>https://github.com/altasoft/next</PackageProjectUrl>
     <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
     <PackageTags>Data extensions</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,5 +1,4 @@
 ﻿// ReSharper disable once CheckNamespace
-
 using System.Linq;
 using System.Reflection;
 

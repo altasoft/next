@@ -14,7 +14,7 @@
     <PackageTags>Extensions</PackageTags>
     <Copyright>Copyright © ALTA Software Ltd. 2019</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net45' Or '$(TargetFramework)' == 'netstandard1.3'">

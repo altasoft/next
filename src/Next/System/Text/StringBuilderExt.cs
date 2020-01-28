@@ -62,7 +62,7 @@ namespace System.Text
         public static StringBuilder AppendSeparated(this StringBuilder @this, IEnumerable<string> values,
             string separator)
         {
-            var iterator = values.GetEnumerator();
+            using var iterator = values.GetEnumerator();
 
             if (iterator.MoveNext())
             {
@@ -76,5 +76,8 @@ namespace System.Text
 
             return @this;
         }
+
+        public static StringBuilder AppendLines(this StringBuilder @this, IEnumerable<string> values) =>
+            @this.AppendSeparated(values, Environment.NewLine);
     }
 }

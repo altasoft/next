@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net45;net472</TargetFrameworks>
-    <Version>2.2.3</Version>
+    <TargetFrameworks>netstandard2.0;net45;net472;net48</TargetFrameworks>
+    <Version>2.2.4</Version>
     <PackageTags>Data Extensions</PackageTags>
     <RepositoryUrl>https://github.com/altasoft/next</RepositoryUrl>
-    <Copyright>Copyright © ALTA Software Ltd. 2019</Copyright>
+    <Copyright>Copyright © ALTA Software Ltd. 2021</Copyright>
     <PackageProjectUrl>https://github.com/altasoft/next</PackageProjectUrl>
     <Description>Extension methods for Data</Description>
     <Authors>ALTA Software</Authors>
     <Company>ALTA Software</Company>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <FileVersion>2.2.3.0</FileVersion>
+    <FileVersion>2.2.4.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
